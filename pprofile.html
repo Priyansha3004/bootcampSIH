@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="pprofile.css">
     <title>Patient profile</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 </head>
 <body>
     <!--Header Section-->
@@ -58,49 +61,124 @@
     </div>
 
     <!--Visit History-->
-    <div class="container">
-        <div class="width-50">
-            <h2>Visit History</h2>
-            <div id="filter">
-                <label for="month">Filter by Month:</label>
-                <select id="month">
-                    <option value="all">All</option>
-                    <option value="01">January</option>
-                    <option value="02">February</option>
-                    <!-- Add more months as needed -->
-                </select>
+<div class="container" id="visitHistoryContainer">
+    <div class="width-50">
+        <h2>Visit History</h2>
+        <div id="filter">
+            <label for="month">Filter by Month:</label>
+            <select id="month">
+                <option value="all">All</option>
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <!-- Add more months as needed -->
+            </select>
 
-                <label for="year">Filter by Year:</label>
-                <select id="year">
-                    <option value="all">All</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                    <!-- Add more years as needed -->
-                </select>
+            <label for="year">Filter by Year:</label>
+            <select id="year">
+                <option value="all">All</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <!-- Add more years as needed -->
+            </select>
 
-                <button onclick="filterVisits()">Filter</button>
-            </div>
-
-            <table id="visit-history-table">
-                <thead>
-                    <tr>
-                        <th>Date of Visit</th>
-                        <th>Department</th>
-                        <th>Name of Doctor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Visit history data will be dynamically loaded here -->
-                </tbody>
-            </table>
+            <button onclick="filterVisits()">Filter</button>
         </div>
+
+        <table id="visit-history-table">
+            <thead>
+                <tr>
+                    <th>Date of Visit</th>
+                    <th>Department</th>
+                    <th>Name of Doctor</th>
+                </tr>
+            </thead>
+            <tbody id="visit-history-body">
+                <!-- Visit history data will be dynamically loaded here -->
+            </tbody>
+        </table>
     </div>
-    <!--Medication-->
-    <div class="container">
-        <div  lass="width-50">
-            <div class="medication">
-                <h2>Medication</h2>
-            <table>
+</div>
+
+<script>
+    // Sample visit history data
+    const sampleVisitHistory = [
+        { date: '2023-01-15', department: 'Cardiology', doctor: 'Dr. Smith' },
+        { date: '2023-02-10', department: 'Neurology', doctor: 'Dr. Johnson' }
+        // Add more sample visit history data as needed
+    ];
+
+    function populateVisitHistory(data) {
+        const tbody = document.getElementById('visit-history-body');
+        tbody.innerHTML = '';
+
+        data.forEach(visit => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${visit.date}</td>
+                <td>${visit.department}</td>
+                <td>${visit.doctor}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
+    // Initial population of visit history
+    populateVisitHistory(sampleVisitHistory);
+
+    // Function to fetch and update visit history
+    function fetchAndUpdateVisitHistory() {
+        // Fetch visit history data from the backend
+        // Here, you would make an AJAX call to your backend API to fetch visit history data
+        // This is just a placeholder for demonstration purposes
+
+        // Simulate fetching data from backend (replace with actual AJAX call)
+        setTimeout(() => {
+            // Replace this with your actual fetched data from the backend
+            const fetchedData = [
+                { date: '2023-01-20', department: 'Orthopedics', doctor: 'Dr. Brown' },
+                { date: '2023-02-05', department: 'Oncology', doctor: 'Dr. White' }
+                // Add more fetched visit history data as needed
+            ];
+
+            populateVisitHistory(fetchedData);
+        }, 2000); // Simulate a delay of 2 seconds for demonstration
+    }
+
+    // Function to filter visit history based on selected month and year
+    function filterVisits() {
+        const selectedMonth = document.getElementById('month').value;
+        const selectedYear = document.getElementById('year').value;
+
+        // Filter the visit history data based on selected month and year
+        let filteredData = sampleVisitHistory.filter(visit => {
+            const visitDate = new Date(visit.date);
+            const visitMonth = visitDate.getMonth() + 1; // Months are 0-indexed
+            const visitYear = visitDate.getFullYear();
+
+            if (selectedMonth !== 'all' && selectedYear !== 'all') {
+                return visitMonth.toString() === selectedMonth && visitYear.toString() === selectedYear;
+            } else if (selectedMonth !== 'all') {
+                return visitMonth.toString() === selectedMonth;
+            } else if (selectedYear !== 'all') {
+                return visitYear.toString() === selectedYear;
+            } else {
+                return true; // If no filters are applied
+            }
+        });
+
+        populateVisitHistory(filteredData);
+    }
+
+    // Call fetchAndUpdateVisitHistory function to get real-time updates
+    setInterval(fetchAndUpdateVisitHistory, 5000); // Update every 5 seconds
+</script>
+
+   <!-- Medication -->
+<div class="container" id="medicationContainer">
+    <div class="width-50">
+        <div class="medication">
+            <h2>Medication</h2>
+            <table id="medicationTable">
                 <thead>
                     <tr>
                         <th>Medicine Name</th>
@@ -108,71 +186,107 @@
                         <th>Schedule</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Aspirin</td>
-                        <td>75mg</td>
-                        <td>Once a day</td>
-                    </tr>
-                    <tr>
-                        <td>Paracetamol</td>
-                        <td>500mg</td>
-                        <td>Every 4 hours</td>
-                    </tr>
+                <tbody id="medicationBody">
+                    <!-- Medication data will be dynamically loaded here -->
                 </tbody>
             </table>
-            </div>
         </div>
     </div>
+</div>
+
+<script>
+    // Sample medication data
+    const sampleMedications = [
+        { name: 'Aspirin', dosage: '75mg', schedule: 'Once a day' },
+        { name: 'Paracetamol', dosage: '500mg', schedule: 'Every 4 hours' }
+        // Add more sample medications as needed
+    ];
+
+    function populateMedications() {
+        // Clear existing medication data
+        document.getElementById('medicationBody').innerHTML = '';
+
+        // Populate the table with sample medication data
+        sampleMedications.forEach(medication => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${medication.name}</td>
+                <td>${medication.dosage}</td>
+                <td>${medication.schedule}</td>
+            `;
+            document.getElementById('medicationBody').appendChild(row);
+        });
+    }
+
+    // Populate medications initially
+    populateMedications();
+
+    // Set interval to update medications every 5 seconds (for demonstration purposes)
+    setInterval(populateMedications, 5000);
+</script>
+
     <!--Lab Reports-->
-    <div class="container">
-        <div class="width-50">
-            <div class="labReports">
-                    <h2>Lab Reports</h2>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Test Name</th>
-                          <th>Date</th>
-                          <th>Result</th>
-                          <th>Download</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Blood Test</td>
-                          <td>05/15/23</td>
-                          <td>Normal</td>
-                          <td>
-                            <a href="download/blood_test_report.pdf" download>Download</a>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>Urinalysis</td>
-                          <td>06/02/23</td>
-                          <td>Abnormal</td>
-                          <td>
-                            <a href="download/urinalysis_report.pdf" download>Download</a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-            </div>
+<div class="container" id="labReportsContainer">
+    <div class="width-50">
+        <div class="labReports">
+            <h2>Lab Reports</h2>
+            <table id="labReportsTable">
+                <thead>
+                    <tr>
+                        <th>Test Name</th>
+                        <th>Date</th>
+                        <th>Result</th>
+                        <th>Download</th>
+                    </tr>
+                </thead>
+                <tbody id="labReportsBody">
+                   
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
+
+<script>
+
+    const sampleLabReports = [
+        { testName: 'Blood Test', date: '05/15/23', result: 'Normal', downloadLink: 'download/blood_test_report.pdf' },
+        { testName: 'Urinalysis', date: '06/02/23', result: 'Abnormal', downloadLink: 'download/urinalysis_report.pdf' }
+
+    ];
+
+    function populateLabReports() {
+        document.getElementById('labReportsBody').innerHTML = '';
+
+        sampleLabReports.forEach(report => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${report.testName}</td>
+                <td>${report.date}</td>
+                <td>${report.result}</td>
+                <td><a href="${report.downloadLink}" download>Download</a></td>
+            `;
+            document.getElementById('labReportsBody').appendChild(row);
+        });
+    }
+
+    populateLabReports();
+
+    setInterval(populateLabReports, 5000);
+</script>
+
     <!--Admission-->
     <div class="container">
         <div class="width-50">
             <div class="Admission">
                 <h2>Hospital Admission Section</h2>
                 <div id="patientProfiles">
-                    <!-- Patient profiles will be dynamically added here -->
+                   
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Include JavaScript for real-time updates -->
     <script>
         function fetchPatientProfiles() {
                 const sampleData = [
