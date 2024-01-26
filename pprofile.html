@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pprofile.css">
+    <title>Patient profile</title>
+</head>
+<body>
+    <!--Header Section-->
+    <header >
+        <div class="logo">
+            <img src="" alt="logo" width="50">
+        </div>
+        <div class="mainheading">
+            <h1>Swasthya Connect</h1>
+        </div>
+        <div class="logoutBtn">
+            <a href="#" id="logoutBtn">LOGOUT</a>
+        </div>
+     </header>
+
+    <!--Navigation Bar-->
+    <div class="container">
+        <nav>
+            <div class="options">
+                <Ul class="menu bar">
+                <li><a href="#" class="navBtn" data-target="homePage">Home Page</a></li>
+                <li><a href="#" class="navBtn" data-target="bookAppointment">Book an Appointment</a></li>
+                <li><a href="#" class="navBtn" data-target="bookTest">Book a Test</a></li>
+                <li><a href="#" class="navBtn" data-target="visitHistory">Visit History</a></li>
+                <li><a href="#" class="navBtn" data-target="medication">Medication</a></li>
+                <li><a href="#" class="navBtn" data-target="labReports">Lab Reports</a></li>
+                <li><a href="#" class="navBtn" data-target="admission">Admission</a></li>
+                </Ul>
+            </div>
+        </nav>
+    </div>
+
+    <!--Patient Profile-->
+    <div class="container ">
+        <div class="width-50">
+            <div class="patient-profile">
+                <h2>Patient Details</h2>
+                <strong>Name:</strong> John Doe<br>
+                <strong>Age:</strong> 30<br>
+                <strong>Gender:</strong> Male<br>
+                <strong>Blood Group:</strong> A+<br>
+                <strong>Contact Number:</strong> 123-456-7890<br>
+                <strong>Address:</strong> 123 Main St, Cityville<br>
+                <strong>Sponsor (Mediclaim Name):</strong> XYZ Insurance<br>
+                <strong>Registration Number:</strong> ABC123<br>
+            </div>
+            <div class="width-50">
+                <img src="img.png" class="patientimg">
+            </div>
+        </div>
+    </div>
+
+    <!--Visit History-->
+    <div class="container">
+        <div class="width-50">
+            <h2>Visit History</h2>
+            <div id="filter">
+                <label for="month">Filter by Month:</label>
+                <select id="month">
+                    <option value="all">All</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <!-- Add more months as needed -->
+                </select>
+
+                <label for="year">Filter by Year:</label>
+                <select id="year">
+                    <option value="all">All</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <!-- Add more years as needed -->
+                </select>
+
+                <button onclick="filterVisits()">Filter</button>
+            </div>
+
+            <table id="visit-history-table">
+                <thead>
+                    <tr>
+                        <th>Date of Visit</th>
+                        <th>Department</th>
+                        <th>Name of Doctor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Visit history data will be dynamically loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Medication-->
+    <div class="container">
+        <div  lass="width-50">
+            <div class="medication">
+                <h2>Medication</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Medicine Name</th>
+                        <th>Dosage</th>
+                        <th>Schedule</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Aspirin</td>
+                        <td>75mg</td>
+                        <td>Once a day</td>
+                    </tr>
+                    <tr>
+                        <td>Paracetamol</td>
+                        <td>500mg</td>
+                        <td>Every 4 hours</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    <!--Lab Reports-->
+    <div class="container">
+        <div class="width-50">
+            <div class="labReports">
+                    <h2>Lab Reports</h2>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Test Name</th>
+                          <th>Date</th>
+                          <th>Result</th>
+                          <th>Download</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Blood Test</td>
+                          <td>05/15/23</td>
+                          <td>Normal</td>
+                          <td>
+                            <a href="download/blood_test_report.pdf" download>Download</a>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Urinalysis</td>
+                          <td>06/02/23</td>
+                          <td>Abnormal</td>
+                          <td>
+                            <a href="download/urinalysis_report.pdf" download>Download</a>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+            </div>
+        </div>
+    </div>
+    <!--Admission-->
+    <div class="container">
+        <div class="width-50">
+            <div class="Admission">
+                <h2>Hospital Admission Section</h2>
+                <div id="patientProfiles">
+                    <!-- Patient profiles will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include JavaScript for real-time updates -->
+    <script>
+        function fetchPatientProfiles() {
+                const sampleData = [
+                { name: "John Doe", age: 45, condition: "Fever" },
+                { name: "Jane Smith", age: 30, condition: "Fractured Leg" },
+                { name: "Michael Johnson", age: 55, condition: "Heart Attack" }
+                
+            ];
+
+            document.getElementById('patientProfiles').innerHTML = '';
+
+            sampleData.forEach(patient => {
+                const profileDiv = document.createElement('div');
+                profileDiv.innerHTML = `
+                    <h3>${patient.name}</h3>
+                    <p>Age: ${patient.age}</p>
+                    <p>Condition: ${patient.condition}</p>
+                    <hr>
+                `;
+                document.getElementById('patientProfiles').appendChild(profileDiv);
+            });
+        }
+
+        fetchPatientProfiles();
+
+        setInterval(fetchPatientProfiles, 5000);
+    </script>
+       
+    <script src="pprofile.js"></script>
+</body>
+</html>
