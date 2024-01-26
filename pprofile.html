@@ -45,18 +45,13 @@
             const logoutBtn = document.getElementById('logoutBtn');
 
             logoutBtn.addEventListener('click', function(event) {
-                event.preventDefault(); // Prevent the default action
-
-                // You can perform logout functionality here
-                // For example, sending an AJAX request to the backend to invalidate the session
-
-                // After successful logout, redirect the user to the login page or perform any other action
+                event.preventDefault();
             });
         });
     </script>
 
     <!--Patient Profile-->
-    <div class="container ">
+    <div class="container">
         <div class="width-50">
             <div class="patient-profile">
                 <h2>Patient Details</h2>
@@ -70,11 +65,29 @@
                 <strong>Registration Number:</strong> ABC123<br>
             </div>
             <div class="width-50">
-                <img src="img.png" class="patientimg">
+                <img src="male_img.png" class="patientimg" id="patientImage">
             </div>
         </div>
     </div>
-
+    
+    <script>
+        // JavaScript code to dynamically change the patient image based on gender
+        document.addEventListener("DOMContentLoaded", function() {
+            var gender = document.querySelector('.patient-profile strong:nth-of-type(3)').nextSibling.nodeValue.trim(); // Extracting gender from the DOM
+            var patientImage = document.getElementById('patientImage');
+    
+            // Change image source based on gender
+            if (gender.toLowerCase() === 'male') {
+                patientImage.src = 'male_img.png';
+            } else if (gender.toLowerCase() === 'female') {
+                patientImage.src = 'female_img.png';
+            } else {
+                // If gender is not specified or not recognized, you can set a default image or handle it accordingly
+                patientImage.src = 'default_img.png';
+            }
+        });
+    </script>
+    
   <!--Visit History-->
 <div class="container" id="visitHistoryContainer">
     <div class="width-50">
@@ -306,38 +319,6 @@
 
         setInterval(fetchPatientProfiles, 5000);
     </script>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Footer with Form</title>
-      <style>
-        /* CSS for responsiveness */
-        .footer-container {
-          display: flex;
-          flex-wrap: wrap;
-        }
-    
-        .col {
-          flex: 1 0 250px;
-          margin: 10px;
-        }
-    
-        ul {
-          list-style-type: none;
-          padding: 0;
-        }
-    
-        /* Add responsive styles as needed */
-        @media (max-width: 768px) {
-          .col {
-            flex: 1 0 100%;
-          }
-        }
-      </style>
-    </head>
-    <body>
       <footer>
         <div class="footer-container">
           <!--logo and info column-->
