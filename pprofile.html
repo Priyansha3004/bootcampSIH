@@ -11,7 +11,7 @@
 </head>
 <body>
     <!--Header Section-->
-    <header >
+    <header>
         <div class="logo">
             <img src="" alt="logo" width="50">
         </div>
@@ -21,24 +21,39 @@
         <div class="logoutBtn">
             <a href="#" id="logoutBtn">LOGOUT</a>
         </div>
-     </header>
+    </header>
 
-    <!--Navigation Bar-->
+    <!-- Navigation Bar -->
     <div class="container">
         <nav>
             <div class="options">
-                <Ul class="menu bar">
-                <li><a href="#" class="navBtn" data-target="homePage">Home Page</a></li>
-                <li><a href="#" class="navBtn" data-target="bookAppointment">Book an Appointment</a></li>
-                <li><a href="#" class="navBtn" data-target="bookTest">Book a Test</a></li>
-                <li><a href="#" class="navBtn" data-target="visitHistory">Visit History</a></li>
-                <li><a href="#" class="navBtn" data-target="medication">Medication</a></li>
-                <li><a href="#" class="navBtn" data-target="labReports">Lab Reports</a></li>
-                <li><a href="#" class="navBtn" data-target="admission">Admission</a></li>
-                </Ul>
+                <ul class="menu bar">
+                    <li><a href="#" class="navBtn" data-target="homePage">Home Page</a></li>
+                    <li><a href="#" class="navBtn" data-target="bookAppointment">Book an Appointment</a></li>
+                    <li><a href="#" class="navBtn" data-target="bookTest">Book a Test</a></li>
+                    <li><a href="#" class="navBtn" data-target="visitHistory">Visit History</a></li>
+                    <li><a href="#" class="navBtn" data-target="medication">Medication</a></li>
+                    <li><a href="#" class="navBtn" data-target="labReports">Lab Reports</a></li>
+                    <li><a href="#" class="navBtn" data-target="admission">Admission</a></li>
+                </ul>
             </div>
         </nav>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.getElementById('logoutBtn');
+
+            logoutBtn.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent the default action
+
+                // You can perform logout functionality here
+                // For example, sending an AJAX request to the backend to invalidate the session
+
+                // After successful logout, redirect the user to the login page or perform any other action
+            });
+        });
+    </script>
 
     <!--Patient Profile-->
     <div class="container ">
@@ -60,26 +75,13 @@
         </div>
     </div>
 
-    <!--Visit History-->
+  <!--Visit History-->
 <div class="container" id="visitHistoryContainer">
     <div class="width-50">
         <h2>Visit History</h2>
         <div id="filter">
-            <label for="month">Filter by Month:</label>
-            <select id="month">
-                <option value="all">All</option>
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <!-- Add more months as needed -->
-            </select>
-
-            <label for="year">Filter by Year:</label>
-            <select id="year">
-                <option value="all">All</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <!-- Add more years as needed -->
-            </select>
+            <label for="datepicker">Filter by Date:</label>
+            <input type="text" id="datepicker" placeholder="Select Date">
 
             <button onclick="filterVisits()">Filter</button>
         </div>
@@ -127,10 +129,6 @@
 
     // Function to fetch and update visit history
     function fetchAndUpdateVisitHistory() {
-        // Fetch visit history data from the backend
-        // Here, you would make an AJAX call to your backend API to fetch visit history data
-        // This is just a placeholder for demonstration purposes
-
         // Simulate fetching data from backend (replace with actual AJAX call)
         setTimeout(() => {
             // Replace this with your actual fetched data from the backend
@@ -144,33 +142,27 @@
         }, 2000); // Simulate a delay of 2 seconds for demonstration
     }
 
-    // Function to filter visit history based on selected month and year
-    function filterVisits() {
-        const selectedMonth = document.getElementById('month').value;
-        const selectedYear = document.getElementById('year').value;
+    // Call fetchAndUpdateVisitHistory function to get real-time updates
+    setInterval(fetchAndUpdateVisitHistory, 5000); // Update every 5 seconds
 
-        // Filter the visit history data based on selected month and year
-        let filteredData = sampleVisitHistory.filter(visit => {
-            const visitDate = new Date(visit.date);
-            const visitMonth = visitDate.getMonth() + 1; // Months are 0-indexed
-            const visitYear = visitDate.getFullYear();
-
-            if (selectedMonth !== 'all' && selectedYear !== 'all') {
-                return visitMonth.toString() === selectedMonth && visitYear.toString() === selectedYear;
-            } else if (selectedMonth !== 'all') {
-                return visitMonth.toString() === selectedMonth;
-            } else if (selectedYear !== 'all') {
-                return visitYear.toString() === selectedYear;
-            } else {
-                return true; // If no filters are applied
-            }
+    // Initialize datepicker
+    $(function() {
+        $("#datepicker").datepicker({
+            dateFormat: 'yy-mm-dd', // Set date format to match your data format
+            changeMonth: true,
+            changeYear: true
         });
+    });
+
+    // Function to filter visit history based on selected date
+    function filterVisits() {
+        const selectedDate = document.getElementById('datepicker').value;
+
+        // Filter the visit history data based on selected date
+        let filteredData = sampleVisitHistory.filter(visit => visit.date === selectedDate);
 
         populateVisitHistory(filteredData);
     }
-
-    // Call fetchAndUpdateVisitHistory function to get real-time updates
-    setInterval(fetchAndUpdateVisitHistory, 5000); // Update every 5 seconds
 </script>
 
    <!-- Medication -->
@@ -314,7 +306,151 @@
 
         setInterval(fetchPatientProfiles, 5000);
     </script>
-       
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Footer with Form</title>
+      <style>
+        /* CSS for responsiveness */
+        .footer-container {
+          display: flex;
+          flex-wrap: wrap;
+        }
+    
+        .col {
+          flex: 1 0 250px;
+          margin: 10px;
+        }
+    
+        ul {
+          list-style-type: none;
+          padding: 0;
+        }
+    
+        /* Add responsive styles as needed */
+        @media (max-width: 768px) {
+          .col {
+            flex: 1 0 100%;
+          }
+        }
+      </style>
+    </head>
+    <body>
+      <footer>
+        <div class="footer-container">
+          <!--logo and info column-->
+          <div class="col">
+            <!--logo insert-->
+            <img src="../images/SC_logo.png" alt="logo" class="footlogo" />
+            <div class="footercontent">
+              <h2 class="footerheading">Swasthya Connect</h2>
+              <p class="footerpara"></p>
+            </div>
+          </div>
+    
+          <!--ADDRESS COLUMN-->
+          <div class="footer-side-col">
+            <!--HOME COLUMN-->
+            <div class="col">
+              <h3>HOME</h3>
+              <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#">Medical Report</a></li>
+                <li><a href="#">Self Care</a></li>
+                <li><a href="#">Pharmacy</a></li>
+                <li><a href="#">f&q</a></li>
+              </ul>
+            </div>
+            <!--OUR SERVICES COLUMN-->
+            <div class="col">
+              <h3>
+                SELF CARE
+                <div class="underline"><span></span></div>
+              </h3>
+              <ul>
+                <li><a href="./audio.html">Audio Therapy</a></li>
+                <li><a href="./read.html">Reading therapy</a></li>
+                <li><a href="./laugh.html">Laughter therapy</a></li>
+                <li><a href="./spritiual.html">spritiual therapy</a></li>
+                <li><a href="./yoga.html">Yoga therapy</a></li>
+              </ul>
+            </div>
+            <div class="col">
+              <h3>
+                SUPPORT
+                <div class="underline"><span></span></div>
+              </h3>
+              <p></p>
+              <p class="email-id"><a href="#">Term of use</a></p>
+              <p class="email-id"><a href="#">Privacy and policy</a></p>
+            </div>
+            <!--CONTACTS COLUMN-->
+            <div class="col" id="contactus">
+              <h3>
+                CONTACTS
+                <div class="underline"><span></span></div>
+              </h3>
+              <form id="contactForm" class="inputs-contact">
+                <div class="inside-contact">
+                  <input type="email" placeholder="Email" class="contact-email">
+                  <input type="text" placeholder="Message" class="message">
+                </div>
+                <button type="submit" class="button">Send</button>
+              </form>
+              <div class="social-menu">
+                <ul>
+                  <a href="#" target="_blank">
+                    <li id="social-twitter"><i class="fab fa-2x fa-twitter"></i></li>
+                  </a>
+                  <a href="#" target="_blank">
+                    <li id="social-github"><i class="fab fa-2x fa-github"></i></li>
+                  </a>
+                  <a href="#" target="_blank">
+                    <li id="social-linkedin"><i class="fab fa-2x fa-linkedin-in"></i></li>
+                  </a>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('contactForm');
+    
+          form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+    
+            // Collect form data
+            const formData = new FormData(form);
+    
+            // Send form data to the backend using AJAX
+            fetch('/submit-form', {
+              method: 'POST',
+              body: formData
+            })
+            .then(response => {
+              if (response.ok) {
+                return response.json(); // Assuming the server returns JSON data
+              } else {
+                throw new Error('Network response was not ok.');
+              }
+            })
+            .then(data => {
+              // Handle the response from the server
+              console.log('Form submission successful:', data);
+              // You can update the UI or show a success message here
+            })
+            .catch(error => {
+              console.error('There was a problem with form submission:', error);
+              // Handle errors or display error messages
+            });
+          });
+        });
+      </script>   
     <script src="pprofile.js"></script>
 </body>
 </html>
