@@ -1,90 +1,63 @@
-/* Header Styles */
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 header {
-    background-color: #1a237e; /* Dark blue background color */
-    color: #fff; /* Text color */
-    padding: 10px 20px; /* Padding around content */
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Align items horizontally */
-    align-items: center; /* Align items vertically */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional: Add a shadow */
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
 }
 
-/* Logo Styles */
-.logo img {
-    width: 50px; /* Set width of logo */
-    height: auto; /* Maintain aspect ratio */
+.wrapper {
+    flex: 1;
+    display: flex;
 }
 
-/* Main Heading Styles */
-.mainheading h1 {
-    margin: 0; /* Remove default margin */
-    font-size: 24px; /* Adjust font size */
-}
-
-/* Logout Button Styles */
-.logoutBtn a {
-    color: #fff; /* Text color */
-    text-decoration: none; /* Remove underline */
-    padding: 8px 16px; /* Padding around button text */
-    background-color: #1565c0; /* Button background color */
-    border-radius: 5px; /* Rounded corners */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
-}
-
-.logoutBtn a:hover {
-    background-color: #0d47a1; /* Darker background color on hover */
-}
-
-/* Navigation Bar Styles */
 nav {
-    background-color: teal; 
-    display: flex; /* Use flexbox for layout */
-    justify-content: space-between; /* Space between elements */
-    align-items: center; /* Align items vertically */
-    padding: 10px 20px; /* Padding around content */
+    width: 200px;
+    background-color: #f2f2f2;
+    padding: 10px;
 }
 
-/* Menu Styles */
 .menu {
-    list-style-type: none; /* Remove bullet points */
-    margin: 0; /* Remove default margin */
-    padding: 0; /* Remove default padding */
-    text-align: center; /* Center align the menu items */
+    list-style-type: none;
+    padding: 0;
 }
 
 .menu li {
-    display: inline-block; /* Display items horizontally */
-    margin-right: 20px; /* Spacing between menu items */
+    padding: 5px 0;
 }
 
-.menu li:last-child {
-    margin-right: 0; /* Remove margin for the last item */
+.content {
+    flex: 1;
+    padding: 10px;
 }
 
-.menu li a {
-    text-decoration: none; /* Remove underline */
-    color: #fff; /* Text color */
-    padding: 10px; /* Padding around text */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+.container {
+    margin-bottom: 20px;
 }
 
-.menu li a:hover {
-    background-color: #00695c; /* Darker background color on hover */
+.patient-profile {
+    margin-bottom: 20px;
 }
 
-/* Adjustments for smaller screens */
-@media screen and (max-width: 768px) {
-    /* Adjustments for smaller screens */
-    .mainheading h1 {
-        font-size: 20px; /* Decrease font size for smaller screens */
-    }
-    .logoutBtn a {
-        padding: 6px 12px; /* Decrease padding for smaller screens */
-    }
+.patient-img img {
+    width: 100%;
+    height: auto;
 }
-@media screen and (max-width: 768px) {
-    .menu li {
-        display: block; /* Display items vertically on smaller screens */
-        margin: 10px 0; /* Adjust margin for spacing */
-    }
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: auto; /* Pushes the footer to the bottom */
 }

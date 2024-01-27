@@ -24,9 +24,8 @@
     </header>
 
     <!-- Navigation Bar -->
-    <div class="container">
+    <div class="wrapper">
         <nav>
-            <div class="options">
                 <ul class="menu bar">
                     <li><a href="#" class="navBtn" data-target="homePage">Home Page</a></li>
                     <li><a href="#" class="navBtn" data-target="bookAppointment">Book an Appointment</a></li>
@@ -36,9 +35,7 @@
                     <li><a href="#" class="navBtn" data-target="labReports">Lab Reports</a></li>
                     <li><a href="#" class="navBtn" data-target="admission">Admission</a></li>
                 </ul>
-            </div>
         </nav>
-    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -51,8 +48,8 @@
     </script>
 
     <!--Patient Profile-->
-    <div class="container">
-        <div class="width-50">
+    <div class="content">
+        <div class="container">
             <div class="patient-profile">
                 <h2>Patient Details</h2>
                 <strong>Name:</strong> John Doe<br>
@@ -64,11 +61,10 @@
                 <strong>Sponsor (Mediclaim Name):</strong> XYZ Insurance<br>
                 <strong>Registration Number:</strong> ABC123<br>
             </div>
-            <div class="width-50">
+            <div class="patient-img">
                 <img src="male_img.png" class="patientimg" id="patientImage">
             </div>
         </div>
-    </div>
     
     <script>
         // JavaScript code to dynamically change the patient image based on gender
@@ -90,7 +86,6 @@
     
   <!--Visit History-->
 <div class="container" id="visitHistoryContainer">
-    <div class="width-50">
         <h2>Visit History</h2>
         <div id="filter">
             <label for="datepicker">Filter by Date:</label>
@@ -111,7 +106,6 @@
                 <!-- Visit history data will be dynamically loaded here -->
             </tbody>
         </table>
-    </div>
 </div>
 
 <script>
@@ -180,8 +174,6 @@
 
    <!-- Medication -->
 <div class="container" id="medicationContainer">
-    <div class="width-50">
-        <div class="medication">
             <h2>Medication</h2>
             <table id="medicationTable">
                 <thead>
@@ -195,8 +187,6 @@
                     <!-- Medication data will be dynamically loaded here -->
                 </tbody>
             </table>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -232,8 +222,6 @@
 
     <!--Lab Reports-->
 <div class="container" id="labReportsContainer">
-    <div class="width-50">
-        <div class="labReports">
             <h2>Lab Reports</h2>
             <table id="labReportsTable">
                 <thead>
@@ -245,11 +233,8 @@
                     </tr>
                 </thead>
                 <tbody id="labReportsBody">
-                   
                 </tbody>
             </table>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -282,15 +267,12 @@
 
     <!--Admission-->
     <div class="container">
-        <div class="width-50">
-            <div class="Admission">
                 <h2>Hospital Admission Section</h2>
                 <div id="patientProfiles">
                    
                 </div>
-            </div>
-        </div>
     </div>
+</div>
 
     <script>
         function fetchPatientProfiles() {
@@ -319,7 +301,8 @@
 
         setInterval(fetchPatientProfiles, 5000);
     </script>
-      <footer>
+
+          <footer>
         <div class="footer-container">
           <!--logo and info column-->
           <div class="col">
