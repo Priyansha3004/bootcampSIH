@@ -1,141 +1,129 @@
-/* Styling for the body */
+/* Resetting default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: white; /* Light blue background color for the body */
+    background-color: #f0f0f0; /* Light grey background */
 }
 
-/* Styling for the header */
+/* Header styling */
 header {
-    background-color: darkblue; /* Blue background color */
+    background-color: blue; /* Blue background */
     color: white;
-    padding: 10px 20px;
+    padding: 10px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+    align-items: center;
 }
 
-/* Styling for the logo */
 .logo img {
-    width: 50px; /* Adjust the width of your logo */
-}
-
-/* Styling for the main heading */
-.mainheading {
-    flex-grow: 1; /* Allows "Swasthya Connect" to take up available space */
-    text-align: center;
-    margin: 0;
+    vertical-align: middle;
 }
 
 .mainheading h1 {
-    margin: 0;
-}
-
-/* Styling for the logout button */
-.logoutBtn {
-    margin-left: 20px; /* Adding some space between "Swasthya Connect" and logout button */
+    font-size: 24px;
 }
 
 .logoutBtn a {
     color: white;
     text-decoration: none;
-    border: 1px solid white;
-    padding: 8px 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
 }
 
-.logoutBtn a:hover {
-    background-color: white;
-    color: #0074D9; /* Blue color for hover effect */
-}
-
-/* CSS for the sidebar navigation */
+/* Navigation styling */
 #sidebar {
-    position: relative; /* Make it relative to its container */
-    float: left;
-    width: 220px; /* Adjust the width as needed */
-    background-color: #333;
-    padding-top: 20px; /* Add padding to the top */
-    z-index: 1000; /* Ensure sidebar stays on top of other content */
-    overflow-y: auto; /* Enable vertical scrolling if needed */
-}
-
-.menu {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0;
-    margin: 0; /* Remove default margin */
-}
-
-.menu li {
-    border-bottom: 1px solid #555; /* Separating line between menu items */
-}
-
-.menu li:last-child {
-    border-bottom: none; /* Remove border for last item */
-}
-
-.menu li a {
-    display: block;
-    padding: 15px 20px;
-    color: #fff;
-    text-decoration: none;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.menu li a:hover {
-    background-color: #0074D9; /* Teal color for hover effect */
-    color: white;
-}
-
-/* CSS for content alignment */
-.content {
-    margin-left: 240px; /* Leave space for the sidebar */
+    background: teal; /* Teal background */
     padding: 20px;
 }
 
-/* Additional styles for the sections */
+.menu.bar {
+    list-style-type: none;
+    display: flex; /* Display the menu items as flex items */
+}
+
+.menu.bar li {
+    margin-right: 20px; /* Adjust margin between menu items */
+}
+
+.menu.bar li:last-child {
+    margin-right: 0; /* Remove margin from the last menu item */
+}
+
+.menu.bar li a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Content styling */
+.content {
+    padding: 20px;
+    width: 100%;
+    max-width: 800px; /* Limit content width */
+}
+
 .container {
-    background-color: #f9f9f9; /* Background color for containers */
-    border: 1px solid #ddd; /* Add a border around containers */
-    border-radius: 5px; /* Rounded corners */
+    background-color: white;
+    padding: 20px;
     margin-bottom: 20px;
-    padding: 15px;
 }
 
-h2 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-/* Styling for individual sections */
 .patient-profile {
-    margin-bottom: 20px; /* Add space between sections */
+    margin-bottom: 20px;
+}
+
+.patient-profile strong {
+    font-weight: bold;
 }
 
 .patient-img img {
-    max-width: 100%; /* Ensure images don't overflow their containers */
-    height: auto;
-    display: block; /* Ensure images are block elements */
-    margin-top: 10px; /* Add margin above images */
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 10px;
 }
 
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
 
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: teal;
+    color: white;
+}
 
 /* Footer Styling */
 footer {
     font-family: "Poppins", sans-serif;
+    background-color: darkblue;
+    color: white;
+    padding: 20px 0; /* Adjust padding as needed */
+    text-align: center;
 }
 
 .footer-container {
-    bottom: 0;
     width: 100%;
     display: flex;
     justify-content: center;
-    flex-wrap: nowrap;
     background-color: darkblue;
-    padding: 20px 0; /* Adjust padding as needed */
+    margin-top: 20px; /* Add margin from the content */
 }
 
 .footer-side-col {
@@ -169,10 +157,10 @@ footer a:focus {
 
 .button {
     border-radius: 5px;
-    color: rgb(0, 0, 0);
+    color: black;
     margin-left: 30%;
     font-size: 15px;
-    padding: 10px 10px 10px 10px;
+    padding: 10px;
     cursor: pointer;
     margin-top: 5px;
 }
@@ -362,223 +350,4 @@ footer a:focus {
     margin-left: auto;
     display: flex;
     flex-direction: column;
-}
-/* Styling for the visit history container */
-#visitHistoryContainer {
-    background-color: white;
-    border: 2px solid #0074D9; /* Teal border */
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
-}
-
-/* Styling for the visit history headings */
-#visitHistoryContainer h2 {
-    color: #0074D9; /* Teal color for headings */
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-/* Styling for the filter section */
-#filter {
-    margin-bottom: 20px;
-}
-
-#filter label {
-    color: #333; /* Dark blue color for labels */
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-#datepicker {
-    padding: 8px;
-    border: 1px solid #0074D9; /* Teal border */
-    border-radius: 5px;
-    margin-right: 10px;
-    font-size: 16px;
-}
-
-#filter button {
-    background-color: #0074D9; /* Teal background color for button */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-    font-size: 16px;
-}
-
-#filter button:hover {
-    background-color: #0056b3; /* Darker teal color on hover */
-}
-
-/* Styling for the visit history table */
-#visit-history-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#visit-history-table th,
-#visit-history-table td {
-    border: 1px solid #ddd; /* Light gray border */
-    padding: 12px;
-    text-align: left;
-    font-size: 16px;
-}
-
-#visit-history-table th {
-    background-color: #0074D9; /* Teal background color for table header */
-    color: white;
-    font-weight: bold;
-}
-
-#visit-history-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row background color */
-}
-
-/* Hover effect for table rows */
-#visit-history-table tbody tr:hover {
-    background-color: #e0e0e0; /* Light gray background color on hover */
-    transition: background-color 0.3s;
-}
-/* Styling for the medication container */
-#medicationContainer {
-    background-color: white;
-    border: 2px solid #0074D9; /* Teal border */
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
-}
-
-/* Styling for the medication headings */
-#medicationContainer h2 {
-    color: #0074D9; /* Teal color for headings */
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-/* Styling for the medication table */
-#medicationTable {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-#medicationTable th,
-#medicationTable td {
-    border: 1px solid #ddd; /* Light gray border */
-    padding: 12px;
-    text-align: left;
-    font-size: 16px;
-}
-
-#medicationTable th {
-    background-color: #0074D9; /* Teal background color for table header */
-    color: white;
-    font-weight: bold;
-}
-
-#medicationTable tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Alternate row background color */
-}
-
-/* Hover effect for table rows */
-#medicationTable tbody tr:hover {
-    background-color: #e0e0e0; /* Light gray background color on hover */
-    transition: background-color 0.3s;
-}
-
-/* Styling for the medication table cells */
-#medicationTable th,
-#medicationTable td {
-    padding: 12px;
-    text-align: left;
-    font-size: 16px;
-}
-
-/* Styling for the medication table header */
-#medicationTable th {
-    background-color: #0074D9; /* Teal background color for table header */
-    color: white;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-/* Styling for even rows in the medication table */
-#medicationTable tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Light gray background color for even rows */
-}
-
-/* Styling for odd rows in the medication table */
-#medicationTable tbody tr:nth-child(odd) {
-    background-color: white; /* White background color for odd rows */
-}
-
-/* Hover effect for table rows */
-#medicationTable tbody tr:hover {
-    background-color: #e0e0e0; /* Light gray background color on hover */
-    transition: background-color 0.3s;
-}
-/* Styling for the lab reports container */
-#labReportsContainer {
-    background-color: white; /* Set background color to white */
-    border: 2px solid #0074D9; /* Add a solid border with teal color */
-    border-radius: 8px; /* Rounded border corners */
-    padding: 20px; /* Add padding inside the container */
-    margin-bottom: 30px; /* Add some space at the bottom */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
-}
-
-/* Styling for the lab reports heading */
-#labReportsContainer h2 {
-    color: #0074D9; /* Set teal color for the heading */
-    font-size: 24px; /* Adjust font size */
-    margin-bottom: 15px; /* Add some space at the bottom of the heading */
-}
-
-/* Styling for the lab reports table */
-#labReportsTable {
-    width: 100%; /* Set the table width to 100% */
-    border-collapse: collapse; /* Collapse the borders between table cells */
-    margin-top: 20px; /* Add some space at the top of the table */
-}
-
-/* Styling for table headers and cells */
-#labReportsTable th,
-#labReportsTable td {
-    border: 1px solid #ddd; /* Add a light gray border around cells */
-    padding: 12px; /* Add padding inside cells */
-    text-align: left; /* Align text to the left within cells */
-    font-size: 16px; /* Set font size */
-}
-
-/* Styling for table header cells */
-#labReportsTable th {
-    background-color: #0074D9; /* Set teal background color for headers */
-    color: white; /* Set text color to white */
-    font-weight: bold; /* Set font weight to bold */
-}
-
-/* Styling for even rows in the table */
-#labReportsTable tbody tr:nth-child(even) {
-    background-color: #f2f2f2; /* Add a light gray background color to even rows */
-}
-
-/* Hover effect for table rows */
-#labReportsTable tbody tr:hover {
-    background-color: #e0e0e0; /* Light gray background color on hover */
-    transition: background-color 0.3s; /* Smooth transition effect */
-}
-
-/* Styling for download links in the table */
-#labReportsTable a {
-    color: #0074D9; /* Set teal color for links */
-    text-decoration: none; /* Remove default underline */
-}
-
-#labReportsTable a:hover {
-    text-decoration: underline; /* Underline effect on hover */
 }
