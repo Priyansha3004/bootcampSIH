@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+body, h1 {
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+body,p  {
+    margin: 0;
+    padding: 0;
+    color: black;
+}
+h2, h3,  ul, li {
+    color: #3498db; 
+}
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Global Styles */
+body {
+    background-color: #f8f8f8;
+    color: black;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.navbar {
+    background-color: #007bb5;
+    padding: 15px;
+    text-align: center;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    max-width: 50px;
+}
+
+.logout {
+    cursor: pointer;
+}
+
+/* Navigation Styles */
+.main-nav {
+    background-color: #3498db;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.main-nav a {
+    display: block;
+    padding: 15px;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px;
+    text-align: justify;
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.main-nav a:hover {
+    background-color: #3498db;
+}
+
+/* Dashboard Styles */
+.dashboard {
+    padding: 20px;
+}
+
+/* Doctor Profile Styles */
+.doctor-profile,
+.patient-details,
+.prescriptions,
+.test-results,
+.doctor-routine,
+.blood-organ-request,
+.feedback-box {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.doctor-profile img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Table Styles */
+.patient-details table,
+.prescriptions table,
+.test-results table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.patient-details th,
+.patient-details td,
+.prescriptions th,
+.prescriptions td,
+.test-results th,
+.test-results td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.patient-details th,
+.prescriptions th,
+.test-results th {
+    background-color: #f2f2f2;
+}
+
+/* Blood/Organ Request Styles */
+.blood-organ-request form {
+    margin-top: 10px;
+}
+
+.blood-organ-request label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.blood-organ-request input,
+.blood-organ-request textarea,
+form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.blood-organ-request button,
+.feedback-box button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.blood-organ-request button:hover,
+.feedback-box button:hover {
+    background-color: #3498db;
+}
+
+/* Feedback Box Styles */
+.feedback-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feedback-post {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment-corner {
+    position: relative;
+}
+
+.comment-corner p {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
+    color: #888;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .main-nav ul {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .main-nav a {
+        text-align: center;
+    }
+
+    .feedback-post,
+    .blood-organ-request form {
+        width: 100%;
+    }
+}
+
+
+/* Feedback Box Styles */
+.feedback-box {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.feedback-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.feedback-post {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.comment-corner {
+    position: relative;
+}
+
+.comment-corner p {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    font-size: 12px;
+    color: #888;
+}

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="doctor.css" />
+  <style>
+    /* Add your additional styles here */
+    .patient-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .patient-table th,
+    .patient-table td {
+      padding: 10px;
+      border: 1px solid #ddd;
+    }
+
+    .patient-table th {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    .patient-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .search-container {
+      margin-bottom: 20px;
+    }
+
+    .search-container input[type="text"],
+    .search-container input[type="date"] {
+      width: 20%;
+      padding: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <img src="../images/SC_logo.png" alt="Logo" class="logo" />
+    <span class="logout">Logout</span>
+  </header>
+
+  
+  <nav class="main-nav">
+    <ul>
+      <li><a href="#doctor-profile">Doctor Profile</a></li>
+      <li><a href="#patient-details">Patient Details</a></li>
+      <li><a href="#prescriptions">Prescriptions</a></li>
+      <li><a href="#test-results">Test Results</a></li>
+      <li><a href="#schedule">Doctor's Routine</a></li>
+      <li><a href="#blood-organ-request">Blood/Organ Requests</a></li>
+      <li><a href="#post-updates">Post Updates</a></li>
+    </ul>
+  </nav>
+
+  <main class="dashboard">
+    <!-- Doctor Profile Section -->
+    <section id="doctor-profile" class="doctor-profile">
+      <div class="profile-container">
+        <div class="profile-image">
+          <img src="volunteer.jpg" alt="Doctor Picture" />
+        </div>
+        <div class="profile-details">
+          <h2>Doctor Profile</h2>
+          <p><strong>Name:</strong> Dr. Jane Smith</p>
+          <p><strong>Age:</strong> 35</p>
+          <p><strong>Gender:</strong> Female</p>
+          <p><strong>Contact:</strong> drjanesmith@example.com | (+91) 9911XXXXXX</p>
+          <p><strong>Specialty:</strong> Cardiology</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="patient-details" class="patient-details">
+      <h2>Patient Details</h2>
+      <div class="search-container">
+        <input type="text" id="search" onkeyup="filterPatients()" placeholder="Search for patients..." />
+        <input type="date" id="date-filter" onchange="filterPatients()" />
+      </div>
+      <div class="patient-details-container">
+        <table class="patient-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Bed Number</th>
+              <th>Details</th>
+            </tr>
+          </thead>
+          <tbody id="patientTableBody">
+            <tr>
+              <td>John Doe</td>
+              <td>10/01/23</td>
+              <td>Recovering</td>
+              <td>203</td>
+              <td><a href="patient.html">View Details</a></td>
+            </tr>
+            <tr>
+              <td>Jane Smith</td>
+              <td>09/15/23</td>
+              <td>In Treatment</td>
+              <td>205</td>
+              <td>
+                <a href="patient_details/jane_smith.html">View Details</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Bob Johnson</td>
+              <td>10/05/23</td>
+              <td>Stable</td>
+              <td>210</td>
+              <td>
+                <a href="patient_details/bob_johnson.html">View Details</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Alice Brown</td>
+              <td>11/02/23</td>
+              <td>Discharged</td>
+              <td>215</td>
+              <td>
+                <a href="patient_details/alice_brown.html">View Details</a>
+              </td>
+            </tr>
+            <tr>
+              <td>Mark Wilson</td>
+              <td>12/10/23</td>
+              <td>Recovering</td>
+              <td>220</td>
+              <td>
+                <a href="patient_details/mark_wilson.html">View Details</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Prescriptions Section -->
+    <section id="prescriptions" class="prescriptions">
+      <h2>Prescriptions</h2>
+        <div class="prescription-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Medicine Name</th>
+                <th>Dosage</th>
+                <th>Schedule</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>Aspirin</td>
+                <td>75mg</td>
+                <td>Once a day</td>
+              </tr>
+              <tr>
+                <td>Jane Smith</td>
+                <td>Paracetamol</td>
+                <td>500mg</td>
+                <td>Every 4 hours</td>
+              </tr>
+              <tr>
+                <td>Bob Johnson</td>
+                <td>Amoxicillin</td>
+                <td>250mg</td>
+                <td>Twice a day</td>
+              </tr>
+              <tr>
+                <td>Alice Brown</td>
+                <td>Ibuprofen</td>
+                <td>200mg</td>
+                <td>As needed</td>
+              </tr>
+              <tr>
+                <td>Mark Wilson</td>
+                <td>Ciprofloxacin</td>
+                <td>500mg</td>
+                <td>Once a day</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Test Results Section -->
+      <section id="test-results" class="test-results">
+        <h2>Test Results</h2>
+        <div class="test-results-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Patient Name</th>
+                <th>Test Name</th>
+                <th>Date</th>
+                <th>Result</th>
+                <th>Download</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>John Doe</td>
+                <td>Blood Test</td>
+                <td>08/15/23</td>
+                <td>Normal</td>
+                <td>
+                  <a href="downloads/blood_test_john_doe.pdf" download
+                    >Download</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Jane Smith</td>
+                <td>X-Ray</td>
+                <td>09/20/23</td>
+                <td>Clear</td>
+                <td>
+                  <a href="downloads/xray_jane_smith.pdf" download>Download</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Bob Johnson</td>
+                <td>Urine Analysis</td>
+                <td>10/10/23</td>
+                <td>Normal</td>
+                <td>
+                  <a href="downloads/urine_analysis_bob_johnson.pdf" download
+                    >Download</a
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td>Alice Brown</td>
+                <td>MRI</td>
+                <td>11/05/23</td>
+                <td>Abnormal</td>
+                <td>
+                  <a href="downloads/mri_alice_brown.pdf" download>Download</a>
+                </td>
+              </tr>
+              <tr>
+                <td>Mark Wilson</td>
+                <td>CT Scan</td>
+                <td>12/12/23</td>
+                <td>Clear</td>
+                <td>
+                  <a href="downloads/ct_scan_mark_wilson.pdf" download
+                    >Download</a
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="schedule" class="doctor-routine">
+        <h2>Doctor Routine</h2>
+        <p><strong>Monday:</strong> 9:00 AM - 12:00 PM</p>
+        <p><strong>Tuesday:</strong> 1:00 PM - 5:00 PM</p>
+        <p><strong>Wednesday:</strong> Not available</p>
+        <p><strong>Thursday:</strong> 10:00 AM - 3:00 PM</p>
+        <p><strong>Friday:</strong> 8:00 AM - 12:00 PM</p>
+      </section>
+
+      <!-- Blood/Organ Request Section -->
+      <section id="blood-organ-request" class="blood-organ-request">
+        <h2>Blood/Organ Requests</h2>
+        <!-- Form for blood/organ requests -->
+        <form id="request-form">
+          <label for="patient-name">Patient Name:</label>
+          <input type="text" id="patient-name" name="patient-name" required />
+          <br />
+
+          <label for="patient-id">Patient ID:</label>
+          <input type="text" id="patient-id" name="patient-id" required />
+          <br />
+
+          <label>Request Type:</label>
+          <div class="request-type">
+            <input
+              type="checkbox"
+              id="blood-request"
+              name="request-type"
+              value="blood"
+            />
+            <label for="blood-request">Blood</label>
+
+            <input
+              type="checkbox"
+              id="organ-request"
+              name="request-type"
+              value="organ"
+            />
+            <label for="organ-request">Organ</label>
+          </div>
+          <br />
+
+          <label for="details">Additional Details:</label>
+          <textarea id="details" name="details" rows="4"></textarea>
+          <br />
+
+          <button type="submit">Update Requests</button>
+        </form>
+      </section>
+
+      <!-- Feedback Box Section -->
+      <section id="post-updates" class="feedback-box">
+        <h2>Feedback Box</h2>
+
+        <!-- Form for Posting Updates -->
+        <form id="post-update-form" class="post-update-form">
+          <label for="comments">Comments:</label>
+          <textarea
+            id="comments"
+            name="comments"
+            rows="4"
+            placeholder="Enter your comments here"
+            required
+          ></textarea>
+          <br />
+
+          <button type="submit">Post Update</button>
+        </form>
+      </section>
+    </main>
+    </body>
+    <script src="script.js"></script>
+    <script>
+      function filterPatients() {
+        const input = document.getElementById("search");
+        const filter = input.value.toUpperCase();
+        const dateFilter = document.getElementById("date-filter").value;
+        const tableRows = document.getElementsByTagName("tr");
+  
+        for (let i = 0; i < tableRows.length; i++) {
+          const cells = tableRows[i].getElementsByTagName("td");
+          const nameCell = cells[0];
+          const dateCell = cells[1];
+  
+          if (nameCell && dateCell) {
+            const name = nameCell.textContent || nameCell.innerText;
+            const patientDate = dateCell.textContent || dateCell.innerText;
+  
+            if (name.toUpperCase().indexOf(filter) > -1 || filter === "") {
+              if (patientDate === dateFilter || dateFilter === "") {
+                tableRows[i].style.display = "";
+              } else {
+                tableRows[i].style.display = "none";
+              }
+            } else {
+              tableRows[i].style.display = "none";
+            }
+          }
+        }
+      }
+    </script>
+    </html>
