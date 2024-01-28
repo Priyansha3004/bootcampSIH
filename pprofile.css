@@ -1,21 +1,15 @@
-/* Resetting default margin and padding */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Body styling */
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0; /* Light grey background */
+    margin: 0;
+    padding: 0;
 }
 
-/* Header styling */
+/* Header Styles */
 header {
-    background-color: blue; /* Blue background */
-    color: white;
-    padding: 10px;
+    background-color: #1a237e;
+    color: #fff;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,331 +17,307 @@ header {
 
 .logo img {
     vertical-align: middle;
+    width: 50px;
 }
 
-.mainheading h1 {
-    font-size: 24px;
+.mainheading {
+    text-align: center;
+    flex-grow: 1;
 }
 
 .logoutBtn a {
-    color: white;
+    color: #fff;
     text-decoration: none;
+    padding: 8px 16px;
+    background-color: #1565c0;
+    border-radius: 5px;
 }
 
-/* Navigation styling */
+.logoutBtn a:hover {
+    background-color: #0d47a1;
+}
+
+/* Navigation Bar Styles */
+.wrapper {
+    display: flex;
+}
+
 #sidebar {
-    background: teal; /* Teal background */
-    padding: 20px;
+    background-color: #303f9f;
+    width: 250px;
+    height: auto;
 }
 
-.menu.bar {
+.menu {
     list-style-type: none;
-    display: flex; /* Display the menu items as flex items */
+    padding: 0;
+    margin: 0;
 }
 
-.menu.bar li {
-    margin-right: 20px; /* Adjust margin between menu items */
-}
-
-.menu.bar li:last-child {
-    margin-right: 0; /* Remove margin from the last menu item */
-}
-
-.menu.bar li a {
-    color: white;
+.menu a {
+    display: block;
+    color: #fff;
     text-decoration: none;
+    padding: 15px 20px;
+    position: relative;
+    transition: background-color 0.3s ease;
 }
 
+.menu a:hover {
+    background-color: #3f51b5;
+}
 
-/* Content styling */
+/* Add lines between menu items */
+.menu a:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Active menu item */
+.menu a.active {
+    background-color: #1a237e;
+}
+
+/* Content Styles */
 .content {
     padding: 20px;
-    width: 100%;
-    max-width: 800px; /* Limit content width */
+    flex-grow: 1;
 }
 
-.container {
-    background-color: white;
+/* Container Styles */
+.container#patient {
+    background-color: #fff; /* White background */
+    border: 2px solid #1a237e; /* Blue border */
+    border-radius: 8px;
     padding: 20px;
-    margin-bottom: 20px;
+    overflow: hidden; /* Ensure the container respects border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
 
+/* Patient Details Section */
 .patient-profile {
-    margin-bottom: 20px;
+    float: left;
+    width: 60%; /* Adjust as needed */
+}
+
+.patient-profile h2 {
+    color: #1a237e; /* Dark blue color for headings */
+    margin-bottom: 10px;
 }
 
 .patient-profile strong {
-    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Profile Picture Section */
+.patient-img {
+    float: right;
+    width: 40%; /* Adjust as needed */
+    text-align: center;
 }
 
 .patient-img img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-top: 10px;
+    border-radius: 50%; /* Make the image circular */
+    width: 150px; /* Adjust as needed */
+    height: 150px; /* Adjust as needed */
+    border: 3px solid #1a237e; /* Blue border for the image */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
 }
 
-/* Table styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .patient-profile,
+    .patient-img {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* Visit History Container */
+#visitHistoryContainer {
+    background-color: #ffffff; /* White background */
+    border: 2px solid #1a237e; /* Blue border */
+    border-radius: 8px;
+    padding: 20px;
+    overflow: hidden; /* Ensure the container respects border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+#visitHistoryContainer h2 {
+    color: #1a237e; /* Dark blue color for headings */
+    margin-bottom: 20px;
+    display: inline-block; /* Ensure filter is inline with header */
+}
+
+/* Filter Section */
+#filter {
+    float: right;
     margin-bottom: 20px;
 }
 
-table, th, td {
-    border: 1px solid #ddd;
+#filter label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #1a237e; /* Dark blue color for labels */
 }
 
-th, td {
+#datepicker {
     padding: 8px;
-    text-align: left;
-}
-
-th {
-    background-color: teal;
-    color: white;
-}
-
-/* Footer Styling */
-footer {
-    font-family: "Poppins", sans-serif;
-    background-color: darkblue;
-    color: white;
-    padding: 20px 0; /* Adjust padding as needed */
-    text-align: center;
-}
-
-.footer-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    background-color: darkblue;
-    margin-top: 20px; /* Add margin from the content */
-}
-
-.footer-side-col {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 80%;
-}
-
-.footer-side-col > .col {
-    padding: 2.5rem;
-    flex-wrap: nowrap;
-}
-
-.footer-container > .col {
-    padding: 2.5rem;
-    flex-basis: 20%;
-    color: white;
-}
-
-.footer-container .col a:hover,
-footer a:focus {
-    color: cyan;
-}
-
-.contact-email,
-.message {
-    padding: 0.7rem 0.7rem 0.7rem 0.7rem;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.button {
     border-radius: 5px;
-    color: black;
-    margin-left: 30%;
-    font-size: 15px;
-    padding: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    width: 150px; /* Adjust width as needed */
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #1a237e; /* Dark blue button */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 5px;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
 }
 
-@media (max-width: 1120px) {
-    .footer-side-col {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-    }
+button:hover {
+    background-color: #0d47a1; /* Darker blue on hover */
 }
 
-@media (max-width: 730px) {
-    .footer-container {
-        gap: 0.5rem;
-        flex-wrap: wrap;
-    }
-
-    .footer-container .col {
-        padding: 2rem;
-        flex-basis: 31%;
-    }
-
-    .footer-container p {
-        color: white;
-        margin-top: 1rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .footer-side-col {
-        grid-template-columns: 1fr;
-        grid-template-rows: minmax(auto, auto);
-    }
-
-    .footer-container .col {
-        padding: 1rem;
-        flex-basis: 100%;
-    }
-}
-
-.footer-container .col a {
-    display: inline-block;
-    position: relative;
-    color: white;
-}
-
-.footer-container .col ul li a:after {
-    content: "";
-    position: absolute;
+/* Visit History Table */
+#visit-history-table {
     width: 100%;
-    transform: scaleX(0);
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: cyan;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
+    border-collapse: collapse;
 }
 
-.footer-container .col ul li a:hover:after {
-    transform: scaleX(1);
-    transform-origin: bottom left;
-}
-
-.footer-container p {
-    color: white;
-}
-
-.footer-container .col .email-id {
-    word-wrap: break-word;
-    text-decoration: underline;
-}
-
-.email-id a {
-    text-decoration: none;
-    color: white;
-}
-
-.footer-container .col h3 {
-    color: rgb(228, 26, 77);
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-    font-weight: 900;
-    font-family: "Ubuntu", sans-serif;
-}
-
-.footer-container .col img {
-    display: block;
-    margin: 0 auto;
-    width: 140px;
-    cursor: pointer;
-}
-
-.footer-container .col .footerheading {
-    display: flex;
-    color: white;
-    margin-top: 0.5px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.footer-container .col .footerpara {
-    display: flex;
-    margin-top: -19px;
-    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-    letter-spacing: 4px;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.fab:hover {
-    text-decoration: none;
-}
-
-.footer-container .col .sukoon {
-    color: rgb(30, 240, 191);
-    letter-spacing: 5px;
-}
-
-.footer-container .col .social-menu ul {
-    display: flex;
-    gap: 1rem;
-}
-
-.footer-container .col .social-menu ul a {
-    color: white;
-}
-
-.footer-container .col .social-menu ul a li {
-    transition: transform 250ms ease-out;
-}
-
-.footer-container .col .social-menu ul a li:hover {
-    transform: scale(1.4) !important;
-    text-decoration: none !important;
-}
-
-.footer-container .col .social-menu ul a li#social-twitter:hover {
-    color: #1da1f2;
-}
-
-.footer-container .col .social-menu ul a li#social-github {
-    transition: transform 250ms ease-out, color 250ms ease-out,
-        padding 250ms ease-out !important;
-}
-
-.footer-container .col .social-menu ul a li#social-github:hover {
-    transform: scale(1.2) !important;
-    color: black;
-    background-color: whitesmoke;
-    padding: 2px 2px 0px 2px;
-    border-radius: 25px;
-}
-
-.footer-container .col .social-menu ul a li#social-linkedin:hover {
-    color: #0a66c2;
-}
-
-.footer-container .col ul li {
-    list-style-type: none;
+#visit-history-table th,
+#visit-history-table td {
+    padding: 12px;
     text-align: left;
-    margin-top: 0.5rem;
+    border: 1px solid #1a237e; /* Blue border for table cells */
 }
 
-.footer-container .col ul li a {
-    text-decoration: none;
-    color: white;
+#visit-history-table th {
+    background-color: #1a237e; /* Dark blue color for table headers */
+    color: #fff;
 }
 
-@media screen and (max-width: 600px) {
-    .footer-container .col ul li {
-        text-align: center;
-    }
-
-    .footer-container {
-        text-align: center;
-    }
-
-    .footer-container .col .social-menu ul {
-        justify-content: center;
-    }
+#visit-history-table tbody tr:nth-child(even) {
+    background-color: #f5f5f5; /* Alternate row background color */
 }
 
-.footercontent {
-    margin-right: auto;
-    margin-left: auto;
-    display: flex;
-    flex-direction: column;
+/* Medication Container */
+#medicationContainer {
+    background-color: #ffffff; /* White background */
+    border: 2px solid #1a237e; /* Blue border */
+    border-radius: 8px;
+    padding: 20px;
+    overflow: hidden; /* Ensure the container respects border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
 }
+
+#medicationContainer h2 {
+    color: #1a237e; /* Dark blue color for headings */
+    margin-bottom: 20px;
+}
+
+/* Medication Table */
+#medicationTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#medicationTable th,
+#medicationTable td {
+    padding: 12px;
+    text-align: left;
+    border: 2px solid #1a237e; /* Blue border for table cells */
+}
+
+#medicationTable th {
+    background-color: #1a237e; /* Dark blue color for table headers */
+    color: #fff;
+}
+
+#medicationTable tbody tr:nth-child(even) {
+    background-color: #f5f5f5; /* Alternate row background color */
+}
+
+#medicationTable tbody tr:hover {
+    background-color: #e3f2fd; /* Hover color */
+}
+/* Lab Reports Container */
+#labReportsContainer {
+    background-color: #ffffff; /* White background */
+    border: 2px solid #1a237e; /* Blue border */
+    border-radius: 8px;
+    padding: 20px;
+    overflow: hidden; /* Ensure the container respects border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+#labReportsContainer h2 {
+    color: #1a237e; /* Dark blue color for headings */
+    margin-bottom: 20px;
+}
+
+/* Lab Reports Table */
+#labReportsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#labReportsTable th,
+#labReportsTable td {
+    padding: 12px;
+    text-align: left;
+    border: 2px solid #1a237e; /* Blue border for table cells */
+}
+
+#labReportsTable th {
+    background-color: #1a237e; /* Dark blue color for table headers */
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#labReportsTable tbody tr:nth-child(even) {
+    background-color: #f5f5f5; /* Alternate row background color */
+}
+
+#labReportsTable tbody tr:hover {
+    background-color: #e3f2fd; /* Hover color */
+}
+
+/* Button styles for the download button */
+.download-button {
+    background-color: #1a237e; /* Dark blue background */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #0d47a1; /* Darker blue on hover */
+}
+/* Admission Container */
+#admission {
+    background-color: #ffffff; /* White background */
+    border: 2px solid #1a237e; /* Blue border */
+    border-radius: 8px;
+    padding: 20px;
+    overflow: hidden; /* Ensure the container respects border radius */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+}
+
+#admission h2 {
+    color: #1a237e; /* Dark blue color for headings */
+    margin-bottom: 20px;
+    font-size: 24px; /* Adjust font size as needed */
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
